@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fackUserData } from "../pi/api";
-import { addUser, removeUser } from "../redux/store/slices/userSlice";
+import { addUser, removeUser, clearAllUser } from "../redux/store/slices/userSlice";
 
 const UserDetail = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,10 @@ const UserDetail = () => {
 
   const removeEle = (i) => {
     dispatch(removeUser(i));
+  };
+
+  const removeAll = () => {
+    dispatch(clearAllUser());
   };
 
   return (
@@ -40,7 +44,7 @@ const UserDetail = () => {
           Add User
         </button>
         <button
-          onClick={() => addNewUser(fackUserData())}
+          onClick={() => removeAll(fackUserData())}
           className="mt-1 text-center py-1 px-5 btn btn-danger"
         >
           Remove All User
